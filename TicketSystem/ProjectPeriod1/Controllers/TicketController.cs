@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace ProjectPeriod1.Controllers
 {
 
-    [Authorize]
+   // [Authorize]
     public class TicketController : Controller
     {
         private readonly TicketService _ticSvc;
@@ -28,12 +28,12 @@ namespace ProjectPeriod1.Controllers
         public ActionResult Create() => View();
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult<Ticket> Create(Ticket ticket)
         {
             ticket.Created = DateTime.Now;
-            ticket.UserId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
-            ticket.UserName = User.Identity.Name;
+           
+          
             if (ModelState.IsValid)
             {
                 _ticSvc.Create(ticket);
@@ -46,17 +46,14 @@ namespace ProjectPeriod1.Controllers
             View(_ticSvc.Find(id));
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+      //  [ValidateAntiForgeryToken]
         public ActionResult Edit(Ticket ticket)
         {
             ticket.LastUpdated = DateTime.Now;
             ticket.Created = ticket.Created.ToLocalTime();
             if (ModelState.IsValid)
             {
-                if (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value != ticket.UserId)
-               {
-                    return Unauthorized();
-               }
+                
                 _ticSvc.Update(ticket);
                 return RedirectToAction("Index");
             }

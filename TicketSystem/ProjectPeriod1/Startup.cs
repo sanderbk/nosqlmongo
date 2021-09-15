@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using ProjectPeriod1.Models;
+using ProjectPeriod1.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,7 @@ namespace ProjectPeriod1
             
             services.AddSingleton<IDbSettings>(x => x.GetRequiredService<IOptions<DbSettings>>().Value);
             services.Configure<DbSettings>(Configuration.GetSection(nameof(DbSettings)));
+            services.AddSingleton<TicketService>();
             var mongoDbSettings = Configuration.GetSection(nameof(DbSettings)).Get<DbSettings>();
 
             //services.
@@ -41,6 +43,7 @@ namespace ProjectPeriod1
                 .AddMongoDbStores<ApplicationUser, ApplicationRole, Guid>(
                    mongoDbSettings.ConnectionString, mongoDbSettings.DatabaseName
                 );
+
             services.AddControllersWithViews();
 
         }
@@ -62,7 +65,7 @@ namespace ProjectPeriod1
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
