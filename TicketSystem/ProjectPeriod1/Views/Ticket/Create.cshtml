@@ -1,0 +1,9 @@
+﻿@model ProjectPeriod1.Models.Ticket
+
+<form asp-action="Create">
+    <fieldset class="idea-form">
+        <h2>Submit a Ticket</h2>
+        @Html.TextAreaFor(m => m.Subject)
+        <input type="submit" name="Create" />
+    </fieldset>
+</form>

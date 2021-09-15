@@ -1,0 +1,21 @@
+﻿@model IEnumerable<ProjectPeriod1.Models.Ticket>
+
+<h1>List of Ideas</h1>
+
+@foreach (var tic in Model)
+{
+    <div class="idea">
+        <span>Created By: @tic.UserName on @tic.Created.ToLocalTime()</span>
+        <span>Last Updated: @tic.LastUpdated.ToLocalTime()</span>
+        <div>
+            @tic.Subject
+        </div>
+        @if (User.Identity.IsAuthenticated && User.Claims.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.NameIdentifier).Value == @tic.UserId)
+        {
+            <a asp-action="Edit" asp-route-id="@tic.Id">edit</a>
+            <a asp-action="Delete" asp-route-id="@tic.Id">delete</a>
+        }
+    </div>
+}
+<hr />
+<a class="create" asp-action="Create">Add New Idea</a>

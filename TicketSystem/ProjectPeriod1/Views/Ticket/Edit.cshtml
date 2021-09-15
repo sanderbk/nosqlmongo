@@ -1,0 +1,12 @@
+﻿@model ProjectPeriod1.Models.Ticket
+
+<form asp-action="Edit">
+    <fieldset class="idea-form">
+        @Html.HiddenFor(m => m.Created)
+        @Html.HiddenFor(m => m.UserId)
+        @Html.HiddenFor(m => m.UserName)
+        @Html.LabelFor(m => m.Subject)
+        @Html.TextAreaFor(m => m.Subject)
+        <input type="submit" name="Update" />
+    </fieldset>
+</form>
