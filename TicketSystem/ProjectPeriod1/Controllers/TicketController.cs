@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace ProjectPeriod1.Controllers
 {
 
-   // [Authorize]
+   [Authorize]
     public class TicketController : Controller
     {
         private readonly TicketService _ticSvc;
@@ -28,7 +28,7 @@ namespace ProjectPeriod1.Controllers
         public ActionResult Create() => View();
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public ActionResult<Ticket> Create(Ticket ticket)
         {
             ticket.Created = DateTime.Now;
@@ -46,7 +46,7 @@ namespace ProjectPeriod1.Controllers
             View(_ticSvc.Find(id));
 
         [HttpPost]
-      //  [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(Ticket ticket)
         {
             ticket.LastUpdated = DateTime.Now;
