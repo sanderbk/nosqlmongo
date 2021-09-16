@@ -291,3 +291,4 @@ C:\Users\sande\Documents\GitHub\nosqlmongo\TicketSystem\ProjectPeriod1\obj\Debug
 C:\Users\sande\Documents\GitHub\nosqlmongo\TicketSystem\ProjectPeriod1\obj\Debug\netcoreapp3.1\ProjectPeriod1.pdb
 C:\Users\sande\Documents\GitHub\nosqlmongo\TicketSystem\ProjectPeriod1\obj\Debug\netcoreapp3.1\ProjectPeriod1.genruntimeconfig.cache
 C:\Users\sande\Documents\GitHub\nosqlmongo\TicketSystem\ProjectPeriod1\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
+C:\Users\Sandier\Documents\GitHub\nosqlmongo\TicketSystem\ProjectPeriod1\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
