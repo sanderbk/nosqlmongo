@@ -9,9 +9,17 @@
 </head>
 <body>
     <header>
+        <div class="mx-4 text-center alert-light alert-server" role="alert">
+            <div class="w-50">
+                <img class="" src="~/img/logotgg.png" />
+            </div>
+            <div class="w-50"> <h2><strong>No Desk</strong></h2> Licensed to The Garden Group.</div>
+            <button type="button" class="close" data-dismiss="alert">×</button>
+           
+        </div>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ProjectPeriod1</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">The Garden Group</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -24,15 +32,18 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        @{ 
+                        @{
                             if (User?.Identity?.IsAuthenticated ?? false)
                             {
-                            <li class="nav-item">
-                                <u>Welkom @User.Identity.Name</u>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
-                            </li>
-                                }
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-success text-dark disabled">Welkom @User.Identity.Name</a>
+                                </li>
+
                             }
+                        }
 
                     </ul>
 
@@ -48,7 +59,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2021 - ProjectPeriod1 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2021 - The Garden Group - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
