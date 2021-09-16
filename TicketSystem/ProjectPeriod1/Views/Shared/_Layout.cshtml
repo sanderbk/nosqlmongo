@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - ProjectPeriod1</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://kit.fontawesome.com/a862706d02.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- <header>
@@ -67,8 +68,8 @@
                     <div class="p-0 m-0 text-center row">
                                     <div class="w-100">
                                         <small>
-                                            Welkom <strong>USER</strong>!
-                                            <a asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                                            Welkom <strong>@User.Identity.Name</strong>!
+                                            <a asp-area="" asp-controller="Account" asp-action="Logout"><i class="fas fa-sign-out-alt"></i></a>
                                         </small>
                                     </div>
                     </div>
@@ -106,7 +107,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link text-dark"
                                            asp-area=""
-                                           asp-controller="Home"
+                                           asp-controller="Ticket"
                                            asp-action="Index">Home</a>
                                     </li>
                                 </div>
@@ -115,7 +116,7 @@
                                         <a class="nav-link text-dark"
                                            asp-area=""
                                            asp-controller="Ticket"
-                                           asp-action="Index">Incident Management</a>
+                                           asp-action="List">Incident Management</a>
                                     </li>
                                 </div>
                                 <div class="col-sm">

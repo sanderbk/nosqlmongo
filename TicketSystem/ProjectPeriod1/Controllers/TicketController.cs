@@ -20,10 +20,11 @@ namespace ProjectPeriod1.Controllers
         {
             _ticSvc = ticketService;
         }
-
+      
         [AllowAnonymous]
-        public ActionResult<IList<Ticket>> Index() => View(_ticSvc.Read());
+        public ActionResult<IList<Ticket>> List() => View(_ticSvc.Read());
 
+        public ActionResult<IList<Ticket>> Index() => View(_ticSvc.Read());
         [HttpGet]
         public ActionResult Create() => View();
 
