@@ -6763,19 +6763,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Sandier\\.nuget\\packages\\": {}
+    "C:\\Users\\IIwar\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sandier\\Documents\\GitHub\\nosqlmongo\\TicketSystem\\ProjectPeriod1\\ProjectPeriod1.csproj",
+      "projectUniqueName": "C:\\Users\\IIwar\\Documents\\GitHub\\nosqlmongo\\TicketSystem\\ProjectPeriod1\\ProjectPeriod1.csproj",
       "projectName": "ProjectPeriod1",
-      "projectPath": "C:\\Users\\Sandier\\Documents\\GitHub\\nosqlmongo\\TicketSystem\\ProjectPeriod1\\ProjectPeriod1.csproj",
-      "packagesPath": "C:\\Users\\Sandier\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sandier\\Documents\\GitHub\\nosqlmongo\\TicketSystem\\ProjectPeriod1\\obj\\",
+      "projectPath": "C:\\Users\\IIwar\\Documents\\GitHub\\nosqlmongo\\TicketSystem\\ProjectPeriod1\\ProjectPeriod1.csproj",
+      "packagesPath": "C:\\Users\\IIwar\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\IIwar\\Documents\\GitHub\\nosqlmongo\\TicketSystem\\ProjectPeriod1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Sandier\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\IIwar\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6832,7 +6832,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

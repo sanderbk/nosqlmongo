@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ProjectPeriod1.Models;
+using ProjectPeriod1.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +11,15 @@ namespace ProjectPeriod1.Controllers
 {
     public class UserController : Controller
     {
+        private readonly UserService _userService;
+
         private UserManager<ApplicationUser> _userManager;
         private RoleManager<ApplicationRole> _roleManager;
-        public UserController(UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager)
+        public UserController(UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager, UserService userService)
         {
             this._userManager = userManager;
             this._roleManager = roleManager;
+            _userService = userService;
         }
         public IActionResult Create()
         {
@@ -32,9 +36,10 @@ namespace ProjectPeriod1.Controllers
             {
                 ApplicationUser appUser = new ApplicationUser
                 {
-                    UserName = user.Name,
-                    Email = user.Email
-
+                    UserName = user.UserName,
+                    Email = user.Email,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
                 };
                 IdentityResult result = await _userManager.CreateAsync(appUser, user.Password);
                 if (result.Succeeded)
@@ -70,6 +75,11 @@ namespace ProjectPeriod1.Controllers
                 }
             }
             return View(userRole);
+        }
+
+        public ActionResult List()
+        {
+            return View(_userService.ReadUsers());
         }
     }
 }

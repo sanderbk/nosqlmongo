@@ -33,6 +33,7 @@ namespace ProjectPeriod1
             services.AddSingleton<IDbSettings>(x => x.GetRequiredService<IOptions<DbSettings>>().Value);
             services.Configure<DbSettings>(Configuration.GetSection(nameof(DbSettings)));
             services.AddSingleton<TicketService>();
+            services.AddSingleton<UserService>();
             var mongoDbSettings = Configuration.GetSection(nameof(DbSettings)).Get<DbSettings>();
 
             //services.
