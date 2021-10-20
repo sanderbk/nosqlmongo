@@ -4,22 +4,46 @@
 
 
 
-<h1>List of Ideas</h1>
+<h1>Overview Tickets</h1>
+<a class="create" asp-action="Create"><div class="form-group">
+    <input type="submit" value="Create Incident" class="btn btn-primary" />
+</div></a>
 
-@foreach (var tic in Model)
-{
-
-    <div class="idea">
-        <span>Created By: usr on @tic.Created.ToLocalTime()</span>
-        <span>Last Updated: @tic.LastUpdated.ToLocalTime()</span>
-        <div>
-            @tic.Subject
-        </div>
-
-        <a asp-action="Edit" asp-route-id="@tic.Id">edit</a>
-        <a asp-action="Delete" asp-route-id="@tic.Id">delete</a>
-
-    </div>
-}
-<hr />
-<a class="create" asp-action="Create">Add New Idea</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Created)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastUpdated)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tic in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => tic.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => tic.Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => tic.Created)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => tic.LastUpdated)
+            </td>
+        </tr>
+        }
+    </tbody>
+   </table>
+    
