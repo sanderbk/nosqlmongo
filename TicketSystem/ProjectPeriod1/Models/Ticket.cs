@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace ProjectPeriod1.Models
 {
+    
+
     public class Ticket
     {
         [BsonId]
@@ -19,13 +21,17 @@ namespace ProjectPeriod1.Models
 
         public string Priority { get; set; }
 
+        public string User { get; set; }
+
         public string Subject { get; set; }
 
         public string Deadline { get; set; }
 
         public string Description { get; set; }
         public DateTime Created { get; set; }
-        
 
+        public DateTime LastUpdated { get; set; }
+
+        
     }
 }

@@ -21,6 +21,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Created)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Priority)
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -33,8 +36,11 @@
             <td>
                 @Html.DisplayFor(modelItem => tic.Subject)
             </td>
+            <th>
+                @Html.DisplayFor(model => tic.Created)
+            </th>
             <td>
-                @Html.DisplayFor(modelItem => tic.Created)
+                @Html.DisplayFor(modelItem => tic.Priority)
             </td>
         </tr>
         }

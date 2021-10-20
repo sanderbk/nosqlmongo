@@ -32,6 +32,7 @@ namespace ProjectPeriod1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult<Ticket> Create(Ticket ticket)
         {
+            ticket.LastUpdated = DateTime.Now;
             ticket.Created = DateTime.Now;
            
           

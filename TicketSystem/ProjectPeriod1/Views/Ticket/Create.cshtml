@@ -1,7 +1,6 @@
 ﻿@model ProjectPeriod1.Models.Ticket
 
 
-
 <form asp-action="Create">
     <fieldset class="idea-form">
         <h2>Create new incident ticket</h2>
@@ -49,7 +48,7 @@
                        },
                      new { @class = "myselect" })
             </p>
-            <p>Description:  @Html.TextBoxFor(m => m.Description)</p> 
+            <p>Description:  @Html.TextBoxFor(m => m.Description)</p>
         </form>
         <a class="cancel" asp-action="Delete">
             <div class="form-group">
