@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
 namespace ProjectPeriod1.Models
@@ -11,7 +12,13 @@ namespace ProjectPeriod1.Models
     public class User
     {
         [BsonId]
-        public Guid Id { get; set; }
+        public Guid _id { get; set; }
+
+        public string MongoId
+        {
+            get { return _id.ToString(); }
+            set { _id = Guid.Parse(value); }
+        }
 
         [Required]
         public string UserName { get; set; }

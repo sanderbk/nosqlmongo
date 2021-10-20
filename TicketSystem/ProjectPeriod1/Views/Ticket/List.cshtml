@@ -9,41 +9,62 @@
     <input type="submit" value="Create Incident" class="btn btn-primary" />
 </div></a>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Subject)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Created)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Priority)
-            </th>
-        </tr>
-    </thead>
+<div class="container">
+    <h2>Ticket manager</h2>
+    <table class="table table-striped table-bordered" id="sortTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>@Html.DisplayNameFor(model => model.Deadline)</th>
+                <th>@Html.DisplayNameFor(model => model.Subject)</th>
+                <th>@Html.DisplayNameFor(model => model.User.FirstName)</th>
+                <th>@Html.DisplayNameFor(model => model.ReportDate)</th>
+                <th>@Html.DisplayNameFor(model => model.Status)</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
     <tbody>
-        @foreach (var tic in Model)
+        @{ 
+            int i = 0;
+        }
+        @foreach (var item in Model)
         {
+            i = i + 1;
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => tic.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => tic.Subject)
-            </td>
-            <th>
-                @Html.DisplayFor(model => tic.Created)
-            </th>
-            <td>
-                @Html.DisplayFor(modelItem => tic.Priority)
-            </td>
+            <td>@i</td>
+
+            @if (item.Deadline > DateTime.Now)
+            {
+                <td> @item.Deadline.Subtract(DateTime.Now).Days.ToString()</td>
+            }
+            else
+            {
+                <td class="text-danger">
+                    @item.Deadline.Subtract(DateTime.Now).Days.ToString()
+                </td>
+            }
+            <td>@Html.DisplayFor(modelItem => item.Subject)</td>
+            <td>@Html.DisplayFor(modelItem => item.User.FirstName)</td>
+            <td>@Html.DisplayFor(modelItem => item.ReportDate)</td>
+            @if (item.Status == TicketStatus.InProgress)
+            {
+                <td class="text-warning">@Html.DisplayFor(modelItem => item.Status)</td>
+            }
+            else
+            {
+                <td class="text-danger">@Html.DisplayFor(modelItem => item.Status)</td>
+            }
+
+            <td><a asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-edit"></i></a></td>
+            <td><a asp-action="Delete" asp-route-id="@item.Id"><i class="far fa-trash-alt"></i></a></td>
         </tr>
         }
     </tbody>
    </table>
-    
+   </div>
+<script>
+    $('#sortTable').DataTable();
+</script>
+
+<hr />

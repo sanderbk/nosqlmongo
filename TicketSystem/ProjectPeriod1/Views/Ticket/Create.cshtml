@@ -1,65 +1,76 @@
 ﻿@model ProjectPeriod1.Models.Ticket
+@{
+
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        @if (ViewBag.Message != null)
+        {
+            <div class="p-1 mb-2 bg-success text-white">@ViewBag.Message</div>
+        }
+
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ReportDate" class="control-label"></label>
+                <div class="input-group date" id="datepicker">
+                    <input asp-for="ReportDate" type="text" class="form-control" />
+                    <span class="input-group-append">
+                        <span class="input-group-text bg-white">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subject" class="control-label"></label>
+                <input asp-for="Subject" class="form-control" />
+                <span asp-validation-for="Subject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <textarea class="form-control" asp-for="Description" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label asp-for="User"></label>
+                @Html.DropDownList("getUsers", (IEnumerable<SelectListItem>)ViewBag.getUsers, new { @class = "form-control" })
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Type"></label>
+                <select class="form-control" asp-for="Type" asp-items="Html.GetEnumSelectList<TicketType>()">
+                    <option selected="selected" value="">Please select</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Priority"></label>
+                <select class="form-control" asp-for="Priority" asp-items="Html.GetEnumSelectList<TicketPriority>()">
+                    <option selected="selected" value="">Please select</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Deadline"></label>
+                <select class="form-control" asp-for="Deadline">
+                    <option selected="selected" value="">Please select</option>
+                    <option value="@DateTime.Now.AddDays(7)">7 days</option>
+                    <option value="@DateTime.Now.AddDays(14)">14 days</option>
+                    <option value="@DateTime.Now.AddDays(28)">28 days</option>
+                    <option value="@DateTime.Now.AddMonths(6)">6 months</option>
+                </select>
+            </div>
 
 
-<form asp-action="Create">
-    <fieldset class="idea-form">
-        <h2>Create new incident ticket</h2>
-        <form id="myForm" runat="server">
-            <p>Subject of incident: @Html.TextBoxFor(m => m.Subject_Incident)</p>
-            <p>
-                Type of incident:
-                @Html.DropDownListFor(model => model.Type,
-                  new List<SelectListItem> {
-                       new SelectListItem { Value = "0" , Text = "Software" },
-                       new SelectListItem { Value = "1" , Text = "Hardware" },
-                       new SelectListItem { Value = "2" , Text = "Service" }
-                    },
-                  new { @class = "myselect" })
-            </p>
-            <p>
-                Reported by user:
-                @Html.DropDownListFor(model => model.Id,
-                  new List<SelectListItem> {
-                       new SelectListItem { Value = "0" , Text = "Sander" },
-                       new SelectListItem { Value = "1" , Text = "Fabian" },
-                       new SelectListItem { Value = "2" , Text = "Sed" },
-                       new SelectListItem { Value = "3", Text = "Zico"}
-                    },
-                  new { @class = "myselect" })
-            </p>
-            <p>
-                Priority:
-                @Html.DropDownListFor(model => model.Priority,
-                     new List<SelectListItem> {
-                          new SelectListItem { Value = "0" , Text = "Low" },
-                          new SelectListItem { Value = "1" , Text = "Normal" },
-                          new SelectListItem { Value = "2" , Text = "High" }
-                       },
-                     new { @class = "myselect" })
-            </p>
-            <p>
-                Deadline/Follow up:
-                @Html.DropDownListFor(model => model.Deadline,
-                     new List<SelectListItem> {
-                          new SelectListItem { Value = "0" , Text = "7 Days" },
-                          new SelectListItem { Value = "1" , Text = "14 Days" },
-                          new SelectListItem { Value = "2" , Text = "28 Days" },
-                          new SelectListItem { Value = "3", Text = "6 Months"}
-                       },
-                     new { @class = "myselect" })
-            </p>
-            <p>Description:  @Html.TextBoxFor(m => m.Description)</p>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
         </form>
-        <a class="cancel" asp-action="Delete">
-            <div class="form-group">
-                <input type="submit" value="Cancel" class="btn btn-primary" />
-            </div>
-        </a>
-
-        <a class="create" asp-action="Create">
-            <div class="form-group">
-                <input type="submit" value="Submit Ticket" class="btn btn-primary" />
-            </div>
-        </a>
-    </fieldset>
-</form>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $("#datepicker").datepicker({
+            format: "mm/dd/yyyy @DateTime.Now.ToString("HH:mm:ss")",
+        });
+    });
+</script>
