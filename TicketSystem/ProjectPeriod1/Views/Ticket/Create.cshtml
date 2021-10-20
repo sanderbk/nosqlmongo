@@ -6,21 +6,10 @@
     <fieldset class="idea-form">
         <h2>Create new incident ticket</h2>
         <form id="myForm" runat="server">
-            <p>
-                Date/Time reported:
-
-                @Html.DropDownListFor(model => model.Id,
-                  new List<SelectListItem> {
-                       new SelectListItem { Value = "0" , Text = "Select Date" },
-                       new SelectListItem { Value = "1" , Text = "Wow" },
-                       new SelectListItem { Value = "2" , Text = "YEP" }
-                    },
-                  new { @class = "myselect" })
-            </p> 
-            <p>Subject of incident: @Html.TextBoxFor(m => m.Subject)</p>
+            <p>Subject of incident: @Html.TextBoxFor(m => m.Subject_Incident)</p>
             <p>
                 Type of incident:
-                @Html.DropDownListFor(model => model.Id,
+                @Html.DropDownListFor(model => model.Type,
                   new List<SelectListItem> {
                        new SelectListItem { Value = "0" , Text = "Software" },
                        new SelectListItem { Value = "1" , Text = "Hardware" },
@@ -41,7 +30,7 @@
             </p>
             <p>
                 Priority:
-                @Html.DropDownListFor(model => model.Id,
+                @Html.DropDownListFor(model => model.Priority,
                      new List<SelectListItem> {
                           new SelectListItem { Value = "0" , Text = "Low" },
                           new SelectListItem { Value = "1" , Text = "Normal" },
@@ -51,7 +40,7 @@
             </p>
             <p>
                 Deadline/Follow up:
-                @Html.DropDownListFor(model => model.Id,
+                @Html.DropDownListFor(model => model.Deadline,
                      new List<SelectListItem> {
                           new SelectListItem { Value = "0" , Text = "7 Days" },
                           new SelectListItem { Value = "1" , Text = "14 Days" },
@@ -60,7 +49,7 @@
                        },
                      new { @class = "myselect" })
             </p>
-            <p>Description:  @Html.TextBoxFor(m => m.Subject)</p> 
+            <p>Description:  @Html.TextBoxFor(m => m.Description)</p> 
         </form>
         <a class="cancel" asp-action="Delete">
             <div class="form-group">

@@ -50,7 +50,6 @@ namespace ProjectPeriod1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Ticket ticket)
         {
-            ticket.LastUpdated = DateTime.Now;
             ticket.Created = ticket.Created.ToLocalTime();
             if (ModelState.IsValid)
             {
