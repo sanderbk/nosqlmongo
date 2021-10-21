@@ -1,80 +1,10 @@
 ﻿@model ProjectPeriod1.Models.Ticket
 
-<div class="row">
-    <div class="col-md-8 offset-md-2">
-        @if (ViewBag.Message != null)
-        {
-            <div class="p-1 mb-2 bg-success text-white">@ViewBag.Message</div>
-        }
-
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ReportDate" class="control-label"></label>
-                <div class="input-group date" id="datepicker">
-                    <input asp-for="ReportDate" type="text" class="form-control" />
-                    <span class="input-group-append">
-                        <span class="input-group-text bg-white">
-                            <i class="fa fa-calendar"></i>
-                        </span>
-                    </span>
-                </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="Subject" class="control-label"></label>
-                <input asp-for="Subject" class="form-control" />
-                <span asp-validation-for="Subject" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description"></label>
-                <textarea class="form-control" asp-for="Description" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-            <div class="form-group">
-                <label asp-for="User"></label>
-                @Html.DropDownList("getUsers", (IEnumerable<SelectListItem>)ViewBag.getUsers, new { @class = "form-control" })
-
-            </div>
-            <div class="form-group">
-                <label asp-for="Type"></label>
-                <select class="form-control" asp-for="Type" asp-items="Html.GetEnumSelectList<TicketType>()">
-                    <option selected="selected" value="">Please select</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Priority"></label>
-                <select class="form-control" asp-for="Priority" asp-items="Html.GetEnumSelectList<TicketPriority>()">
-                    <option selected="selected" value="">Please select</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Status"></label>
-                <select class="form-control" asp-for="Status" asp-items="Html.GetEnumSelectList<TicketStatus>()">
-                    <option selected="selected" value="">Please select</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Deadline"></label>
-                <select class="form-control" asp-for="Deadline">
-                    <option selected="selected" value="@Model.Deadline">@Model.Deadline is current deadline</option>
-                    <option value="@DateTime.Now.AddDays(7)">7 days</option>
-                    <option value="@DateTime.Now.AddDays(14)">14 days</option>
-                    <option value="@DateTime.Now.AddDays(28)">28 days</option>
-                    <option value="@DateTime.Now.AddMonths(6)">6 months</option>
-                </select>
-            </div>
-
-
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-<script type="text/javascript">
-    $(function () {
-        $("#datepicker").datepicker({
-            format: "mm/dd/yyyy @DateTime.Now.ToString("HH:mm:ss")",
-
-        });
-    });
-</script>
+<form asp-action="Edit">
+    <fieldset class="idea-form">
+        @Html.HiddenFor(m => m.Created)
+        @Html.LabelFor(m => m.Subject)
+        @Html.TextAreaFor(m => m.Subject)
+        <input type="submit" name="Update" />
+    </fieldset>
+</form>

@@ -1,4 +1,6 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Driver;
 using ProjectPeriod1.Models;
 using System;
 using System.Collections.Generic;
@@ -9,32 +11,37 @@ namespace ProjectPeriod1.Services
 {
     public class UserService
     {
-        private readonly IMongoCollection<User> _users;
-
+        private readonly IMongoCollection<BsonDocument> _userColection;
         public UserService(IDbSettings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);
-            _users = database.GetCollection<User>("Users");
+            _userColection = database.GetCollection<BsonDocument>("Users");
+
         }
-        public IList<User> Read()
+        public User Create(User user)
         {
-            return _users.Find(usr => true).ToList();
+            _userColection.InsertOne(user.ToBsonDocument());
+            return user;
         }
 
+        public IList<User> ReadUsers()
+        {
 
-        public User Find(string id) =>
-           _users.Find(usr => usr.MongoId == id).SingleOrDefault();
-
-
-
-
-        /*
-        public void Update(User user) =>
-            _users.ReplaceOne(usr => usr.Name == user.Name, user);
-
-        public void Delete(string id) =>
-            _users.DeleteOne(usr => usr.Name == id);*/
+            List<BsonDocument> docs = _userColection.Find(new BsonDocument()).ToList();
+            List<User> appusers = new List<User>();
+            foreach (BsonDocument u in docs)
+            {
+                User appuser = new User
+                {
+                    Email = (string)u["Email"],
+                    FirstName = (string)u["FirstName"],
+                    LastName = (string)u["LastName"],
+                    NrOfTickets = (int)u["NrOfTickets"]
+                };
+                appusers.Add(appuser);
+            }
+            return appusers;
+        }
     }
 }
-
