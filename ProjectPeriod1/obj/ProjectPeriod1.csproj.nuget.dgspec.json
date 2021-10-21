@@ -1,21 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sandier\\Documents\\GitHub\\mongoapp\\ProjectPeriod1\\ProjectPeriod1.csproj": {}
+    "C:\\Users\\Zico\\Desktop\\Project database\\nosqlmongo\\ProjectPeriod1\\ProjectPeriod1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sandier\\Documents\\GitHub\\mongoapp\\ProjectPeriod1\\ProjectPeriod1.csproj": {
+    "C:\\Users\\Zico\\Desktop\\Project database\\nosqlmongo\\ProjectPeriod1\\ProjectPeriod1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sandier\\Documents\\GitHub\\mongoapp\\ProjectPeriod1\\ProjectPeriod1.csproj",
+        "projectUniqueName": "C:\\Users\\Zico\\Desktop\\Project database\\nosqlmongo\\ProjectPeriod1\\ProjectPeriod1.csproj",
         "projectName": "ProjectPeriod1",
-        "projectPath": "C:\\Users\\Sandier\\Documents\\GitHub\\mongoapp\\ProjectPeriod1\\ProjectPeriod1.csproj",
-        "packagesPath": "C:\\Users\\Sandier\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sandier\\Documents\\GitHub\\mongoapp\\ProjectPeriod1\\obj\\",
+        "projectPath": "C:\\Users\\Zico\\Desktop\\Project database\\nosqlmongo\\ProjectPeriod1\\ProjectPeriod1.csproj",
+        "packagesPath": "C:\\Users\\Zico\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Zico\\Desktop\\Project database\\nosqlmongo\\ProjectPeriod1\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "H:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Sandier\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Zico\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"

@@ -17,6 +17,7 @@
                 <th>@Html.DisplayNameFor(model => model.Subject)</th>
                 <th>@Html.DisplayNameFor(model => model.User.FirstName)</th>
                 <th>@Html.DisplayNameFor(model => model.ReportDate)</th>
+                <th>@Html.DisplayNameFor(model => model.Priority)</th>
                 <th>@Html.DisplayNameFor(model => model.Status)</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -31,39 +32,40 @@
                 i = i + 1;
 
                
-                <tr>
-                    <td>@i</td>
-                    
-                        @if (item.Deadline > DateTime.Now)
-                        {
+            <tr>
+                <td>@i</td>
+
+                @if (item.Deadline > DateTime.Now)
+                {
                     <td> @item.Deadline.Subtract(DateTime.Now).Days.ToString()</td>
-                        }
-                        else
-                        {
-                <td class="text-danger">
-                    @item.Deadline.Subtract(DateTime.Now).Days.ToString()
-                </td>
-                        }
+                }
+                else
+                {
+                    <td class="text-danger">
+                        @item.Deadline.Subtract(DateTime.Now).Days.ToString()
+                    </td>
+                }
 
 
 
 
 
-                    <td>@Html.DisplayFor(modelItem => item.Subject)</td>
-                    <td>@Html.DisplayFor(modelItem => item.User.FirstName)</td>
-                    <td>@Html.DisplayFor(modelItem => item.ReportDate)</td>
-                    @if (item.Status == TicketStatus.InProgress)
-                    {
-                        <td class="text-warning">@Html.DisplayFor(modelItem => item.Status)</td>
-                    }
-                    else
-                    {
-                        <td class="text-danger">@Html.DisplayFor(modelItem => item.Status)</td>
-                    }
+                <td>@Html.DisplayFor(modelItem => item.Subject)</td>
+                <td>@Html.DisplayFor(modelItem => item.User.FirstName)</td>
+                <td>@Html.DisplayFor(modelItem => item.ReportDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.Priority)</td>
+                @if (item.Status == TicketStatus.InProgress)
+                {
+                    <td class="text-warning">@Html.DisplayFor(modelItem => item.Status)</td>
+                }
+                else
+                {
+                    <td class="text-danger">@Html.DisplayFor(modelItem => item.Status)</td>
+                }
 
-                    <td><a asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-edit"></i></a></td>
-                    <td><a asp-action="Delete" asp-route-id="@item.Id"><i class="far fa-trash-alt"></i></a></td>
-                </tr>
+                <td><a asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-edit"></i></a></td>
+                <td><a asp-action="Delete" asp-route-id="@item.Id"><i class="far fa-trash-alt"></i></a></td>
+            </tr>
             }
         </tbody>
     </table>
