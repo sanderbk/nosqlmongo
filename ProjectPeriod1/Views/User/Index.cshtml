@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ProjectPeriod1.Models.User>
+
+
+
+<h1>View</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+
+
+
+<div class="container">
+    <h2>User manager</h2>
+    <table class="table table-striped table-bordered" id="sortTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>@Html.DisplayNameFor(model => model.Email)</th>
+                <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+                <th>@Html.DisplayNameFor(model => model.LastName)</th>
+                <th># tickets</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item._id)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                    <td>@((ViewBag.TickCount as ICollection<Ticket>).Where(x => x.User.MongoId == item.MongoId).Count())</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script>
+    $('#sortTable').DataTable();
+</script>

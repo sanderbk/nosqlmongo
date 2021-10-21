@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+    int ticketPercentage = 0;
+    int ticketDeadline = 0;
+    int ticketsopen = 0;
+    int ticketsclosed = 0;
+    int ticketCount = 0;
+    int ticketdeadline = 0;
+    if (Model != null)
+    {
+        ticketPercentage = (Model.Count(x => x.Status == TicketStatus.Closed) * 100 / (Model.Count()));
+        ticketDeadline = (Model.Count(x => x.Deadline > DateTime.Now) * 100 / (Model.Count()));
+        ticketsopen = Model.Count(x => x.Status == TicketStatus.Open);
+        ticketsclosed = Model.Count(x => x.Status == TicketStatus.Closed);
+        ticketCount = Model.Count();
+        ticketdeadline = Model.Count(x => x.Deadline < DateTime.Now);
+}
+
+}
+@model IEnumerable<ProjectPeriod1.Models.Ticket>
+<link href="~/css/graph.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm text-center">
+            <h2 class="">Current Incidents</h2>
+        </div>
+        <div class="col-sm text-center">
+            <a class="btn btn-primary" asp-controller="Ticket" asp-action="List">Show List</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm text-center">
+            <div class="card">
+                <div class="card-body shadow-lg">
+                    <h5 class="card-title">Unresolved incidents</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@ticketsopen tickets open</h6>
+                    <div class="single-chart">
+                        <svg viewBox="0 0 36 36" class="circular-chart orange">
+                            <path class="circle-bg"
+                                  d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle"
+                                  stroke-dasharray="@ticketPercentage, 100"
+                                  d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <text x="18" y="20.35" class="percentage">@ticketsclosed/@ticketCount</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm text-center">
+            <div class="card">
+                <div class="card-body shadow-lg red">
+                    <h5 class="card-title">Incidents past deadline</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">These tickets need your immediate attention</h6>
+                    <div class="single-chart">
+                        <svg viewBox="0 0 36 36" class="circular-chart red">
+                            <path class="circle-bg"
+                                  d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle"
+                                  stroke-dasharray="@ticketDeadline, 100"
+                                  d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <text x="18" y="20.35" class="percentage">@ticketdeadline</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
